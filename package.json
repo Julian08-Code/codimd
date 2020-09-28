@@ -104,7 +104,7 @@
   },
   "devDependencies": {
     "@hackmd/codemirror": "~5.49.5",
-    "@hackmd/emojify.js": "^2.1.0",
+    "@hackmd/emojify.js": "git+https://github.com/tlambertz/emojify.js.git#with-artifacts",
     "@hackmd/idle-js": "~1.0.1",
     "@hackmd/js-sequence-diagrams": "~0.0.1-alpha.3",
     "@susisu/mte-kernel": "^2.1.0",
