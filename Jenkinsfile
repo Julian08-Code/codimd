@@ -22,7 +22,7 @@ pipeline {
         stage('Building image') {
             steps {
                 script {
-                    sh 'docker build -t $imagename  -f deployments/Dockerfile .'
+                    sh 'docker build --build-arg RUNTIME=hackmdio/runtime:node-10-d27854ef -t $imagename  -f deployments/Dockerfile .'
                 }
             }
         }
