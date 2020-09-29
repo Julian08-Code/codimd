@@ -38,6 +38,19 @@ pipeline {
                 }
             }
         }
+
+        stage('Deploy to nix1') {
+            when {
+                branch 'master'
+            }
+            steps {
+                script {
+                    sshagent (credentials: ['nix1-deploy']) {
+                        sh 'ssh -o StrictHostKeyChecking=no -l deploy nix1.allesctf.net sudo systemctl restart codimd'
+                    }
+                }
+            }
+        }
         
     }
 }
