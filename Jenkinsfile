@@ -1,9 +1,8 @@
 pipeline {
 
     environment {
-        imagename = 'alles/codimd'
+        imagename = 'harbor.alles.team/alles/codimd:latest'
         registryCredential = 'registry-creds'
-        dockerImage = ''
     }
 
     agent {
@@ -26,17 +25,19 @@ pipeline {
                 }
             }
         }
-        /*
+        
         stage('Deploy Image') {
+            when {
+                branch 'master'
+            }
             steps {
                 script {
-                    docker.withRegistry( '', registryCredential ) {
-                        dockerImage.push("$BUILD_NUMBER")
-                        dockerImage.push('latest')
+                    docker.withRegistry('https://harbor.alles.team', registryCredential) {
+                        sh 'docker push $imagename'
                     }
                 }
             }
         }
-        */
+        
     }
 }
